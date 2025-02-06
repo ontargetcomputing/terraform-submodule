@@ -14,4 +14,10 @@ jobs:
           curl -X POST -H "Authorization: token ${{ secrets.ROOT_REPO_PAT }}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/ontargetcomputing/terraform-root/actions/workflows/lint.yml/dispatches \
-          -d '{"ref":"main"}'
+          -d '{
+            "ref": "main",
+            "inputs": {
+              "account": "terraform-submodule",
+              "initiator": "${{ github.actor }}"
+            }
+          }'
